@@ -35,13 +35,16 @@ export class UploadFilesComponent implements OnInit {
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
+          console.log(this.progress);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.fileInfos = this.uploadService.getFiles();
-          
+          // this.fileInfos = this.uploadService.getFiles();
+          console.log(this.message);
+          // console.log(this.fileInfos);
         }
       },
       err => {
+        console.log(err);
         this.progress = 0;
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;

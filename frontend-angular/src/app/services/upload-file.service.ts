@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class UploadFileService {
 
-  private baseUrl = 'http://localhost:8080';
+  // private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'https://www.proyectosecologia.net.bo/v1';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class UploadFileService {
       reportProgress: true,
       responseType: 'json'
     });
-
+    console.log(req);
     return this.http.request(req);
   }
 
