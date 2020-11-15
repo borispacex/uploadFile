@@ -38,9 +38,9 @@ export class UploadFilesComponent implements OnInit {
           console.log(this.progress);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          // this.fileInfos = this.uploadService.getFiles();
+          this.fileInfos = this.uploadService.getFiles();
           console.log(this.message);
-          // console.log(this.fileInfos);
+          console.log(this.fileInfos);
         }
       },
       err => {

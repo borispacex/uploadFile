@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,10 +17,15 @@ export class UploadFileService {
 
     formData.append('file', file);
 
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'multipart/form-data');
+
     const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+      headers: headers,
       reportProgress: true,
       responseType: 'json'
     });
+
     console.log(req);
     return this.http.request(req);
   }
@@ -28,4 +33,6 @@ export class UploadFileService {
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`);
   }
+
+
 }
